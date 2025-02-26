@@ -1,3 +1,29 @@
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.card:hover {
+    transform: scale(1.05); /* ขยายขนาดของ card เมื่อเอา cursor ไปชี้ */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* เปลี่ยน shadow เพื่อเพิ่ม effect */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+    .card {
+        margin: 10px;
+    }
+}
 <?php
 include('h.php');
 include("condb.php");
