@@ -73,6 +73,7 @@ $p_id = $_GET["id"];
                                 <b>สเปคสินค้า</b>
                                 <br>
                                 <?php echo nl2br($row["p_spec"]); ?>
+                                <br>
                                 <b>คงเหลือ :</b> <?php echo $row["p_qty"]; ?> <?php echo $row["p_unit"]; ?>
                                 <br>
                                 <b>รายละเอียดสินค้า</b>

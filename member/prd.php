@@ -61,20 +61,25 @@ $p_id = $_GET["id"];
                                 <div id="caption"></div>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-8">
                             <br>
                             <h5><b><?php echo $row["p_name"]; ?></b></h5>
                             <p>
                                 ประเภท : <?php echo $row["type_name"]; ?>
                                 <br>
                                 ราคา : <span style="color: red;"><?php echo number_format($row["p_price"], 2); ?></span>
-                                บาท <br>
+                                บาท 
+                                <br>
+                                <b>สเปคสินค้า</b>
+                                <br>
+                                <?php echo nl2br($row["p_spec"]); ?>
+                                <br>
                                 <b>คงเหลือ :</b> <?php echo $row["p_qty"]; ?> <?php echo $row["p_unit"]; ?>
-                                <br><br>
+                                <br>
                                 <b>รายละเอียดสินค้า</b>
                                 <br>
                                 <?php echo nl2br($row["p_detail"]); ?>
-                                <br><br>จำนวนการเข้าชม<?php echo $row['p_view']; ?> ครั้ง
+                                <br><br>จำนวนการเข้าชม <?php echo $row['p_view']; ?> ครั้ง
                             </p>
                             <p> <!-- Go to www.addthis.com/dashboard to customize your tools -->
                                 <script type="text/javascript"

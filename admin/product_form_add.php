@@ -100,6 +100,7 @@ $result2 = mysqli_query($con, $query2);
               <option value="ชิ้น">ชิ้น</option>
               <option value="กล่อง">กล่อง</option>
               <option value="อัน">อัน</option>
+              <option value="ใบ">ใบ</option>
       </select>
     </div>
   </div>
