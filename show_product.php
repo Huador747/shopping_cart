@@ -11,12 +11,16 @@ $result = mysqli_query($con, $sql);
 <div class="row">
     <?php while ($row_prd = mysqli_fetch_array($result)) { ?>
         <div class="card"
-            style="width: 18rem; margin-top: 10px; margin-right: 7px; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden;">
-            <div class="card-img-container" style="width: 100%; height: 200px; overflow: hidden;">
+            style="width: 18rem; min-height: 500px; margin-top: 10px; margin-right: 7px; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; display: flex; flex-direction: column;">
+            
+            <!-- กำหนดความสูงให้รูปภาพ -->
+            <div class="card-img-container" style="width: 100%; height: 100%; overflow: hidden;">
                 <img src="p_img/<?php echo htmlspecialchars($row_prd['p_img']); ?>" class="card-img-top img-fluid"
-                    alt="<?php echo htmlspecialchars($row_prd['p_name']); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                    alt="<?php echo htmlspecialchars($row_prd['p_name']); ?>" 
+                    style="width: 100%; height: object-fit: cover;">
             </div>
-            <div class="card-body">
+
+            <div class="card-body" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
                 <h5 class="card-title" style="font-size: 1.25rem; font-weight: 600; color: #2d3e50;">
                     <?php echo htmlspecialchars($row_prd['p_name']); ?>
                 </h5>
