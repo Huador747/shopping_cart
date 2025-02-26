@@ -33,18 +33,6 @@ $totalRows_typeprd = mysqli_num_rows($typeprd);
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="btn-group ml-2">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" style="font-size: 1.05rem;">
-                        ประเภทสินค้า
-                    </button>
-                    <div class="dropdown-menu">
-                        <?php do { ?>
-                            <a href="index.php?act=showbytype&type_id=<?php echo $row_typeprd['type_id']; ?>"
-                                class="dropdown-item"> <?php echo $row_typeprd['type_name']; ?></a>
-                        <?php } while ($row_typeprd = mysqli_fetch_assoc($typeprd)); ?>
-                    </div>
-                </div>
                 <ul class="navbar-nav ml-2">
                     <?php if (!isset($member_id) || $member_id == '') { ?>
                         <li class="nav-item ml-2">
@@ -53,7 +41,8 @@ $totalRows_typeprd = mysqli_num_rows($typeprd);
                     <?php } else { ?>
                         <li class="nav-item ml-2">
                             <a class="btn btn-danger" href="../logout.php" role="button"
-                                onclick="return confirm('คุณต้องการออกจากระบบหรือไม่ ?')" style="font-size: 1.05rem;">ออกจากระบบ</a>
+                                onclick="return confirm('คุณต้องการออกจากระบบหรือไม่ ?')"
+                                style="font-size: 1.05rem;">ออกจากระบบ</a>
                         </li>
                     <?php } ?>
                 </ul>
@@ -64,7 +53,8 @@ $totalRows_typeprd = mysqli_num_rows($typeprd);
                     <a class="btn btn-success" href="" role="button" style="font-size: 1.05rem;">ตระกร้าสินค้า</a>
                     <form class="form-inline my-2 my-lg-0 ml-3" name="qp" action="index.php" method="GET">
                         <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาสินค้า" name="q">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="font-size: 1.05rem;">ค้นหา</button>
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit"
+                            style="font-size: 1.05rem;">ค้นหา</button>
                     </form>
                 </div>
             </nav>

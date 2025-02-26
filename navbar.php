@@ -14,18 +14,6 @@ $totalRows_typeprd = mysqli_num_rows($typeprd);
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="btn-group ml-2">
-                    <button type="button-secondary" class="btn btn-light dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        ประเภทสินค้า
-                    </button>
-                    <div class="dropdown-menu">
-                        <?php do { ?>
-                            <a href="index.php?act=showbytype&type_id=<?php echo $row_typeprd['type_id']; ?>"
-                                class="dropdown-item"> <?php echo $row_typeprd['type_name']; ?></a>
-                        <?php } while ($row_typeprd = mysqli_fetch_assoc($typeprd)); ?>
-                    </div>
-                </div>
                 <ul class="navbar-nav ml-2">
                     <li class="nav-item">
                         <a class="btn btn-secondary" href="index.php?act=add" role="button">สมัครสมาชิก</a>
