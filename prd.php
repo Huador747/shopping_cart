@@ -1,29 +1,3 @@
-.card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.card:hover {
-    transform: scale(1.05); /* ขยายขนาดของ card เมื่อเอา cursor ไปชี้ */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* เปลี่ยน shadow เพื่อเพิ่ม effect */
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.card-body {
-    padding: 15px;
-}
-
-@media only screen and (max-width: 768px) {
-    .card {
-        margin: 10px;
-    }
-}
 <?php
 include('h.php');
 include("condb.php");
@@ -47,76 +21,86 @@ $p_id = $_GET["id"];
     include('banner.php');
     include('navbar.php');
     ?>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <?php
-            $sql = "SELECT * FROM tbl_product as p 
+            <!-- Sidebar -->
+            <div class="col-lg-2 col-md-4 col-sm-12">
+                <?php include('menu.php'); ?>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-10 col-md-8 col-sm-12" style="margin-top: 10px">
+                <?php
+                $sql = "SELECT * FROM tbl_product as p 
           INNER JOIN tbl_type  as t ON p.type_id=t.type_id      
       AND p_id = $p_id
       ";
-            $result = mysqli_query($con, $sql) or die("Error in query: $sql " . mysqli_error());
-            $row = mysqli_fetch_array($result);
+                $result = mysqli_query($con, $sql) or die("Error in query: $sql " . mysqli_error());
+                $row = mysqli_fetch_array($result);
 
-            $sql_last_view = "SELECT p_view FROM tbl_product Where p_id = '" . $p_id . "'";
-            $resalt_last_view = mysqli_query($con, $sql_last_view) or die("Error in query: $sql_last_view " . mysqli_error());
-            $row_last_view = mysqli_fetch_assoc($resalt_last_view);
-            //เรียกดูวิวของสินค้านั้นๆ
-            $last_view = $row_last_view['p_view']++;
-            $last_view++;
-            //นำวิวสินค้าเดิมมา+1
-            $update_view = "UPDATE `tbl_product` SET `p_view` = '" . $last_view . "' WHERE `p_id` ='" . $p_id . "'";
-            $resalt_updateview = $con->query($update_view);
-            //อัพเดทวิวสินค้าใหม่
-            
-            ?>
-            <div class="col-md-12">
-                <div class="container" style="margin-top: 25px" ;>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <?php
-                            $img_path = 'p_img/' . $row['p_img'];
-                            if (file_exists($img_path)) {
-                                echo "<img src='$img_path' width='100%' id='myImg'>";
-                            } else {
-                                echo "Image not found.";
-                            }
-                            ?>
-                            <div id="myModal" class="modal">
-                                <span class="close">&times;</span>
-                                <img class="modal-content" id="img01">
-                                <div id="caption"></div>
+                $sql_last_view = "SELECT p_view FROM tbl_product Where p_id = '" . $p_id . "'";
+                $resalt_last_view = mysqli_query($con, $sql_last_view) or die("Error in query: $sql_last_view " . mysqli_error());
+                $row_last_view = mysqli_fetch_assoc($resalt_last_view);
+                //เรียกดูวิวของสินค้านั้นๆ
+                $last_view = $row_last_view['p_view']++;
+                $last_view++;
+                //นำวิวสินค้าเดิมมา+1
+                $update_view = "UPDATE `tbl_product` SET `p_view` = '" . $last_view . "' WHERE `p_id` ='" . $p_id . "'";
+                $resalt_updateview = $con->query($update_view);
+                //อัพเดทวิวสินค้าใหม่
+                
+                ?>
+                <div class="col-md-12">
+                    <div class="container" style="margin-top: 25px" ;>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <?php
+                                $img_path = 'p_img/' . $row['p_img'];
+                                if (file_exists($img_path)) {
+                                    echo "<img src='$img_path' width='100%' id='myImg'>";
+                                } else {
+                                    echo "Image not found.";
+                                }
+                                ?>
+                                <div id="myModal" class="modal">
+                                    <span class="close">&times;</span>
+                                    <img class="modal-content" id="img01">
+                                    <div id="caption"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-8">
-                            <br>
-                            <h5><b><?php echo $row["p_name"]; ?></b></h5>
-                            <p>
-                                ประเภท : <?php echo $row["type_name"]; ?>
+                            <div class="col-md-8">
                                 <br>
-                                ราคา : <span style="color: red;"><?php echo number_format($row["p_price"], 2); ?></span>
-                                บาท 
-                                <br>
-                                <b>สเปคสินค้า</b>
-                                <br>
-                                <?php echo nl2br($row["p_spec"]); ?>
-                                <br>
-                                <b>คงเหลือ :</b> <?php echo $row["p_qty"]; ?> <?php echo $row["p_unit"]; ?>
-                                <br>
-                                <b>รายละเอียดสินค้า</b>
-                                <br>
-                                <?php echo nl2br($row["p_detail"]); ?>
-                                <br><br>จำนวนการเข้าชม <?php echo $row['p_view']; ?> ครั้ง
-                            </p>
-                            <p> <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                                <script type="text/javascript"
-                                    src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5500ee80057fdb99"></script>
-                            <div class="addthis_inline_share_toolbox_sf2w"></div>
-                            </p>
+                                <h5><b><?php echo $row["p_name"]; ?></b></h5>
+                                <p>
+                                    ประเภท : <?php echo $row["type_name"]; ?>
+                                    <br>
+                                    ราคา : <span style="color: red;"><?php echo number_format($row["p_price"], 2); ?></span>
+                                    บาท 
+                                    <br>
+                                    <b>สเปคสินค้า</b>
+                                    <br>
+                                    <?php echo nl2br($row["p_spec"]); ?>
+                                    <br>
+                                    <b>คงเหลือ :</b> <?php echo $row["p_qty"]; ?> <?php echo $row["p_unit"]; ?>
+                                    <br>
+                                    <b>รายละเอียดสินค้า</b>
+                                    <br>
+                                    <?php echo nl2br($row["p_detail"]); ?>
+                                    <br><br>จำนวนการเข้าชม <?php echo $row['p_view']; ?> ครั้ง
+                                </p>
+                                <p> <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                    <script type="text/javascript"
+                                        src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5500ee80057fdb99"></script>
+                                <div class="addthis_inline_share_toolbox_sf2w"></div>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <?php
+                // ...existing code...
+                ?>
             </div>
-
         </div>
     </div>
     <script>
@@ -144,4 +128,5 @@ $p_id = $_GET["id"];
 </body>
 
 </html>
+<?php include('footer.php'); ?>
 <?php include('script4.php'); ?>

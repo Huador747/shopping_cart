@@ -1,14 +1,13 @@
-<header class="main-header">
+<header class="main-header" style="background-color: green;">
   <!-- Logo -->
   <a href="" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>LTE</b></span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>SYSTEM
-    </b></span>
+    <span class="logo-lg"><b>SYSTEM </b></span>
   </a>
   <!-- Header Navbar -->
-  <nav class="navbar navbar-static-top" role="navigation">
+  <nav class="navbar navbar-static-top" role="navigation" style="background-color: green;">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
       <span class="sr-only">Toggle navigation</span>
@@ -21,7 +20,7 @@
          <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="../m_img/<?php echo $row['m_img'];?>" width="25" height="25" class="img-circle user-image" alt="User Image">
-                <span class="hidden-xs">Welcome Admin</span>
+                <span class="hidden-xs">ยินดีต้อนรับ Admin</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
@@ -54,9 +53,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-             <li><a href="index.php">  ระบบร้านค้าออนไลน์ Shopping Cart</a></li>
-
-           
+             <li><a href="index.php">  รายขายอุปกรณ์ตกปลาออนไลน์ Mue Mai Hat Tok</a></li>
               </ul>
             </li>
             

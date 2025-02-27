@@ -103,6 +103,7 @@ $result_t = mysqli_query($con, $sql2) or die ("Error in query: $sql " . mysqli_e
               <option value="กล่อง">กล่อง</option>
               <option value="อัน">อัน</option>
               <option value="ใบ">ใบ</option>
+              <option value="คัน">คัน</option>
       </select>
     </div>
   </div>
