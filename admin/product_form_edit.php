@@ -116,7 +116,7 @@ $result_t = mysqli_query($con, $sql2) or die ("Error in query: $sql " . mysqli_e
       <img src="../p_img/<?php echo $row['p_img'];?>" width="200px">
       <br>
       <input type="file" name="p_img" required class="form-control" accept="image/*" onchange="readURL(this);"/>
-      <img id="blah" src="#" alt="" width="250" class="img-rounded"/ style="margin-top: 10px;">
+      <img id="blah" src="#" alt="" width="250" class="img-rounded" style="margin-top: 10px;">
     </div>
   </div>
   <div class="form-group">

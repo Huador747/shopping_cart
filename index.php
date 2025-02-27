@@ -10,6 +10,7 @@ include("condb.php");
 </head>
 
 <body>
+  <?php  include('menutop.php'); ?>
   <?php
   include('banner.php');
   include('navbar.php');
