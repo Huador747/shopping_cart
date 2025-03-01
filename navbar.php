@@ -27,10 +27,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                     </ul>
-                    <!-- Cart Image Icon (No Background) -->
-                    <a href="cart.php" class="mr-2" title="ตะกร้าสินค้า" style="display: inline-block; margin-top: 5px;">
-                        <img src="m_img/8648831.png" alt="ตะกร้าสินค้า" style="height: 25px; width: auto;">
-                    </a>
+                    <!-- Cart Image Icon with Login Check -->
+                    <?php if (!isset($member_id) || $member_id == '') { ?>
+                        <a href="#" class="mr-2" title="ตะกร้าสินค้า" style="display: inline-block; margin-top: 5px;" 
+                           onclick="alert('กรุณาเข้าสู่ระบบก่อนใช้งานตะกร้าสินค้า'); window.location.href='form_login.php'; return false;">
+                            <img src="m_img/8648831.png" alt="ตะกร้าสินค้า" style="height: 25px; width: auto;">
+                        </a>
+                    <?php } else { ?>
+                        <a href="cart.php" class="mr-2" title="ตะกร้าสินค้า" style="display: inline-block; margin-top: 5px;">
+                            <img src="m_img/8648831.png" alt="ตะกร้าสินค้า" style="height: 25px; width: auto;">
+                        </a>
+                    <?php } ?>
                     <form class="form-inline my-2 my-lg-0" name="qp" action="index.php" method="GET">
                         <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาสินค้า" name="q">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">ค้นหา</button>
