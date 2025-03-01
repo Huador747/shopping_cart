@@ -1,7 +1,4 @@
-<?php
-require_once('../condb.php');
-
-// Assuming you have a session or a query to get the member's name
+<?php require_once('../condb.php');  // Assuming you have a session or a query to get the member's name
 session_start();
 if (isset($_SESSION['member_id'])) {
     $member_id = $_SESSION['member_id'];
@@ -46,12 +43,25 @@ $totalRows_typeprd = mysqli_num_rows($typeprd);
                         </li>
                     <?php } ?>
                 </ul>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                     </ul>
-                    <a class="btn btn-success" href="" role="button" style="font-size: 1.05rem;">ตระกร้าสินค้า</a>
-                    <form class="form-inline my-2 my-lg-0 ml-3" name="qp" action="index.php" method="GET">
+                    
+                    <!-- Cart Icon with Button -->
+                    <?php if (!isset($member_id) || $member_id == '') { ?>
+                        <a class="btn btn-success mr-3 d-flex align-items-center" href="#" role="button" style="font-size: 1.05rem;"
+                           onclick="alert('กรุณาเข้าสู่ระบบก่อนใช้งานตะกร้าสินค้า'); window.location.href='form_login.php'; return false;">
+                            <img src="../m_img/8648831.png" width="24" height="24" class="mr-2" alt="ตะกร้า">
+                        </a>
+                    <?php } else { ?>
+                        <a class="btn btn-success mr-3 d-flex align-items-center" href="cart.php" role="button" style="font-size: 1.05rem;">
+                            <img src="../m_img/8648831.png" width="24" height="24" class="mr-2" alt="ตะกร้า">
+
+                        </a>
+                    <?php } ?>
+                    
+                    <form class="form-inline my-2 my-lg-0" name="qp" action="index.php" method="GET">
                         <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาสินค้า" name="q">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit"
                             style="font-size: 1.05rem;">ค้นหา</button>
