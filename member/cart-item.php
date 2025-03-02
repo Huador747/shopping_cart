@@ -128,7 +128,7 @@ if (isset($_SESSION['cart_items'])) {
                         <span><strong>ยอดรวมสุทธิ</strong></span>
                         <span id="summary-total"><strong>฿0.00</strong></span>
                     </div>
-                    <a href="checkout.php" class="btn btn-primary btn-block w-100">ดำเนินการชำระเงิน</a>
+                    <button id="checkout-btn" class="btn btn-primary btn-block w-100">ดำเนินการชำระเงิน</button>
                     <a href="index.php" class="btn btn-outline-secondary btn-block mt-2 w-100">เลือกซื้อสินค้าต่อ</a>
                 </div>
             </div>
@@ -313,6 +313,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Synchronize cart with server on page load
     syncCartWithServer();
+
+    // Add event listener to checkout button
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function() {
+            if (cartItems.length > 0) {
+                const productId = cartItems[0].id; // Assuming single product checkout for simplicity
+                fetch(`fetch_product.php?id=${productId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = `checkout.php?id=${productId}&name=${encodeURIComponent(data.name)}&price=${data.price}`;
+                        } else {
+                            alert('Failed to fetch product details.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching product details:', error);
+                        alert('An error occurred while fetching product details.');
+                    });
+            } else {
+                alert('Your cart is empty.');
+            }
+        });
+    }
 });
 </script>
 

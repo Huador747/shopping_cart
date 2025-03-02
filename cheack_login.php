@@ -1,10 +1,10 @@
 <?php 
-// print_r($_POST);
 session_start();
-        if(isset($_POST['m_user'])){
-        //connection
-                  include("condb.php");
-        //รับค่า user & mem_password
+if (isset($_POST['m_user'])) {
+    // connection
+    include("condb.php");
+
+    // รับค่า user & mem_password
                   $m_user = mysqli_real_escape_string($con,$_POST['m_user']);
                   $m_pass = mysqli_real_escape_string($con,$_POST['m_pass']);
 

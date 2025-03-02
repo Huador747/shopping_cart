@@ -203,21 +203,27 @@ $p_id = $_GET["id"];
             <!-- Main Content -->
             <div class="col-lg-10 col-md-8 col-sm-12" style="margin-top: 10px">
                 <?php
-                $sql = "SELECT * FROM tbl_product as p 
+                // Use prepared statements for security
+                $stmt = $con->prepare("SELECT * FROM tbl_product as p 
                 INNER JOIN tbl_type as t ON p.type_id=t.type_id      
-                AND p_id = $p_id";
-                $result = mysqli_query($con, $sql) or die("Error in query: $sql " . mysqli_error());
-                $row = mysqli_fetch_array($result);
+                WHERE p_id = ?");
+                $stmt->bind_param("i", $p_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
 
-                $sql_last_view = "SELECT p_view FROM tbl_product Where p_id = '" . $p_id . "'";
-                $resalt_last_view = mysqli_query($con, $sql_last_view) or die("Error in query: $sql_last_view " . mysqli_error());
-                $row_last_view = mysqli_fetch_assoc($resalt_last_view);
+                $stmt_last_view = $con->prepare("SELECT p_view FROM tbl_product WHERE p_id = ?");
+                $stmt_last_view->bind_param("i", $p_id);
+                $stmt_last_view->execute();
+                $resalt_last_view = $stmt_last_view->get_result();
+                $row_last_view = $resalt_last_view->fetch_assoc();
                 //เรียกดูวิวของสินค้านั้นๆ
                 $last_view = $row_last_view['p_view']++;
                 $last_view++;
                 //นำวิวสินค้าเดิมมา+1
-                $update_view = "UPDATE `tbl_product` SET `p_view` = '" . $last_view . "' WHERE `p_id` ='" . $p_id . "'";
-                $resalt_updateview = $con->query($update_view);
+                $stmt_update_view = $con->prepare("UPDATE tbl_product SET p_view = ? WHERE p_id = ?");
+                $stmt_update_view->bind_param("ii", $last_view, $p_id);
+                $stmt_update_view->execute();
                 //อัพเดทวิวสินค้าใหม่
                 
                 // Create a fake review count for demo purposes
@@ -536,7 +542,6 @@ $p_id = $_GET["id"];
                 <h5>Subtotal</h5>
                 <div id="cart-subtotal">฿0.00</div>
             </div>
-            <button class="checkout-btn">CHECKOUT</button>
             <button class="view-cart-btn">VIEW CART</button>
         </div>
     </div>
