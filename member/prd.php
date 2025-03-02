@@ -726,6 +726,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// First, modify your cart sidebar HTML structure to match the design in the images
 document.addEventListener('DOMContentLoaded', function() {
     // Get elements
     const addToCartBtn = document.querySelector('.add-to-cart-btn');
@@ -734,15 +735,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartItemsContainer = document.getElementById('cart-items');
     const cartCount = document.getElementById('cart-count');
     const cartSubtotal = document.getElementById('cart-subtotal');
+    const discountAmount = document.querySelector('.discount-amount');
+    const discountSection = document.querySelector('.discount-section');
     
     // Create overlay
     const overlay = document.createElement('div');
     overlay.className = 'cart-overlay';
     document.body.appendChild(overlay);
     
-    // Cart items array
-    let cartItems = [];
+    // Initialize cart from localStorage if exists
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     let cartTotal = 0;
+    let cartDiscount = 0;
+    
+    // Initial cart display update
+    updateCartDisplay();
     
     // Function to open cart
     function openCart() {
@@ -759,15 +766,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add to cart function
-    function addToCart() {
+    function addToCart(event) {
+        if (event) event.preventDefault();
+        
         // Get product details
+        const productId = document.querySelector('[name="p_id"]') ? 
+            document.querySelector('[name="p_id"]').value : 
+            <?php echo isset($p_id) ? $p_id : '0'; ?>;
         const productName = document.querySelector('.product-title').textContent;
         const productPrice = parseFloat(document.querySelector('.price').textContent.replace('฿', '').replace(',', ''));
         const productImage = document.getElementById('myImg').src;
         const productQuantity = parseInt(document.getElementById('quantity').value);
+        const productVariation = document.querySelector('.form-control') ? document.querySelector('.form-control').value : "";
         
         // Check if product already in cart
-        const existingItemIndex = cartItems.findIndex(item => item.name === productName);
+        const existingItemIndex = cartItems.findIndex(item => 
+            item.id == productId && item.variation === productVariation);
         
         if (existingItemIndex !== -1) {
             // Update quantity if product already in cart
@@ -775,18 +789,39 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             // Add new item to cart
             cartItems.push({
+                id: productId,
                 name: productName,
                 price: productPrice,
                 image: productImage,
-                quantity: productQuantity
+                quantity: productQuantity,
+                variation: productVariation
             });
         }
+        
+        // Save to localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
         
         // Update cart display
         updateCartDisplay();
         
         // Open cart sidebar
         openCart();
+    }
+    
+    // Calculate discounts (example logic - customize based on your requirements)
+    function calculateDiscount(total) {
+        // Example discount: 10% off orders over 5000
+        if (total > 5000) {
+            return total * 0.1;
+        }
+        return 0;
+    }
+    
+    // Function to remove item from cart
+    function removeCartItem(index) {
+        cartItems.splice(index, 1);
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        updateCartDisplay();
     }
     
     // Update cart display
@@ -810,6 +845,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${item.image}" class="cart-item-image" alt="${item.name}">
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.name}</div>
+                        ${item.variation ? `<div class="cart-item-variation">${item.variation}</div>` : ''}
                         <div class="cart-item-price">฿${item.price.toFixed(2)}</div>
                         <div class="cart-item-quantity">
                             <button class="cart-quantity-btn cart-minus-btn" data-index="${index}">-</button>
@@ -817,15 +853,30 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button class="cart-quantity-btn cart-plus-btn" data-index="${index}">+</button>
                         </div>
                     </div>
+                    <div class="delete-item-container">
+                        <button class="delete-item-btn" data-index="${index}">×</button>
+                    </div>
                 </div>
             `;
             
             cartItemsContainer.innerHTML += cartItemHTML;
         });
         
-        // Update cart count and subtotal
+        // Calculate discount
+        cartDiscount = calculateDiscount(cartTotal);
+        
+        // Update cart count, discount and subtotal
         cartCount.textContent = totalQuantity;
-        cartSubtotal.textContent = `฿${cartTotal.toFixed(2)}`;
+        
+        if (cartDiscount > 0) {
+            discountAmount.textContent = `-฿${cartDiscount.toFixed(2)}`;
+            if (discountSection) discountSection.style.display = 'flex';
+        } else {
+            discountAmount.textContent = `฿0.00`;
+            if (discountSection) discountSection.style.display = 'flex';
+        }
+        
+        cartSubtotal.textContent = `฿${(cartTotal - cartDiscount).toFixed(2)}`;
         
         // Add event listeners to quantity buttons
         document.querySelectorAll('.cart-minus-btn').forEach(btn => {
@@ -833,6 +884,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const index = parseInt(this.getAttribute('data-index'));
                 if (cartItems[index].quantity > 1) {
                     cartItems[index].quantity--;
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
                     updateCartDisplay();
                 }
             });
@@ -842,14 +894,39 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.addEventListener('click', function() {
                 const index = parseInt(this.getAttribute('data-index'));
                 cartItems[index].quantity++;
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                updateCartDisplay();
+            });
+        });
+        
+        // Add event listeners to delete buttons
+        document.querySelectorAll('.delete-item-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                removeCartItem(index);
+            });
+        });
+        
+        // Add input validation
+        document.querySelectorAll('.cart-quantity-input').forEach(input => {
+            input.addEventListener('change', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                let quantity = parseInt(this.value);
+                
+                if (isNaN(quantity) || quantity < 1) {
+                    quantity = 1;
+                }
+                
+                cartItems[index].quantity = quantity;
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
                 updateCartDisplay();
             });
         });
     }
     
     // Event listeners
-    addToCartBtn.addEventListener('click', addToCart);
-    closeCartBtn.addEventListener('click', closeCart);
+    if (addToCartBtn) addToCartBtn.addEventListener('click', addToCart);
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
     overlay.addEventListener('click', closeCart);
     
     // Close cart when pressing Escape key
@@ -859,6 +936,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 </script>
     <?php include('script4.php') ?>
     <?php include('footer.php') ?>
