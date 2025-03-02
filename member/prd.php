@@ -2,9 +2,10 @@
 include('h.php');
 include("../condb.php");
 $p_id = $_GET["id"];
+
 ?>
 <!DOCTYPE html>
-
+<a href="checkout.php?id=<?php echo $product_id; ?>" class="buy-now-btn">BUY IT NOW</a>
 <head>
     <?php include('../boot4.php'); ?>
     <style>
@@ -285,7 +286,23 @@ $p_id = $_GET["id"];
                                 
                                 <!-- Buy Buttons -->
                                 <button class="add-to-cart-btn">ADD TO CART</button>
-                                <button class="buy-now-btn">BUY IT NOW</button>
+                                <button class="buy-now-btn" onclick="buyNow()">BUY IT NOW</button>
+
+<script>
+function buyNow() {
+  // ดึงค่า id จาก URL ปัจจุบัน
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get('id');
+  
+  // ถ้ามีค่า id ให้ส่งต่อไปยังหน้า checkout.php
+  if (productId) {
+    window.location.href = 'checkout.php?id=' + productId;
+  } else {
+    // กรณีไม่มี id ให้ไปหน้า checkout โดยตรง
+    window.location.href = 'checkout.php';
+  }
+}
+</script>
                                 </div>
                             </div>
                         </div>
