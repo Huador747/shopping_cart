@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2025 at 10:56 AM
+-- Generation Time: Mar 02, 2025 at 06:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -18,8 +18,761 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+-- Database: `mon_aft`
+--
+CREATE DATABASE IF NOT EXISTS `mon_aft` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `mon_aft`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE `files` (
+  `FilesID` int(4) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `FilesName` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`FilesID`, `Name`, `FilesName`) VALUES
+(1, 'BTS', '2.jpg'),
+(2, 'BUS', '4.png'),
+(3, 'seventeen', '4.png'),
+(4, 'nct127', '1.png'),
+(5, 'boynextdoor', '3.jpg'),
+(6, 'nct127', '1.png'),
+(7, 'prim', '2.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`FilesID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `FilesID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- Database: `phpmyadmin`
+--
+CREATE DATABASE IF NOT EXISTS `phpmyadmin` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `phpmyadmin`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__bookmark`
+--
+
+CREATE TABLE `pma__bookmark` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `dbase` varchar(255) NOT NULL DEFAULT '',
+  `user` varchar(255) NOT NULL DEFAULT '',
+  `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `query` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__central_columns`
+--
+
+CREATE TABLE `pma__central_columns` (
+  `db_name` varchar(64) NOT NULL,
+  `col_name` varchar(64) NOT NULL,
+  `col_type` varchar(64) NOT NULL,
+  `col_length` text DEFAULT NULL,
+  `col_collation` varchar(64) NOT NULL,
+  `col_isNull` tinyint(1) NOT NULL,
+  `col_extra` varchar(255) DEFAULT '',
+  `col_default` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Central list of columns';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__column_info`
+--
+
+CREATE TABLE `pma__column_info` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `column_name` varchar(64) NOT NULL DEFAULT '',
+  `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `mimetype` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `transformation` varchar(255) NOT NULL DEFAULT '',
+  `transformation_options` varchar(255) NOT NULL DEFAULT '',
+  `input_transformation` varchar(255) NOT NULL DEFAULT '',
+  `input_transformation_options` varchar(255) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__designer_settings`
+--
+
+CREATE TABLE `pma__designer_settings` (
+  `username` varchar(64) NOT NULL,
+  `settings_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Settings related to Designer';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__export_templates`
+--
+
+CREATE TABLE `pma__export_templates` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL,
+  `export_type` varchar(10) NOT NULL,
+  `template_name` varchar(64) NOT NULL,
+  `template_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved export templates';
+
+--
+-- Dumping data for table `pma__export_templates`
+--
+
+INSERT INTO `pma__export_templates` (`id`, `username`, `export_type`, `template_name`, `template_data`) VALUES
+(1, 'root', 'database', 'mon_aft', '{\"quick_or_custom\":\"quick\",\"what\":\"sql\",\"structure_or_data_forced\":\"0\",\"table_select[]\":[\"orders\",\"orders_detail\",\"product\"],\"table_structure[]\":[\"orders\",\"orders_detail\",\"product\"],\"table_data[]\":[\"orders\",\"orders_detail\",\"product\"],\"aliases_new\":\"\",\"output_format\":\"sendit\",\"filename_template\":\"@DATABASE@\",\"remember_template\":\"on\",\"charset\":\"utf-8\",\"compression\":\"none\",\"maxsize\":\"\",\"codegen_structure_or_data\":\"data\",\"codegen_format\":\"0\",\"csv_separator\":\",\",\"csv_enclosed\":\"\\\"\",\"csv_escaped\":\"\\\"\",\"csv_terminated\":\"AUTO\",\"csv_null\":\"NULL\",\"csv_columns\":\"something\",\"csv_structure_or_data\":\"data\",\"excel_null\":\"NULL\",\"excel_columns\":\"something\",\"excel_edition\":\"win\",\"excel_structure_or_data\":\"data\",\"json_structure_or_data\":\"data\",\"json_unicode\":\"something\",\"latex_caption\":\"something\",\"latex_structure_or_data\":\"structure_and_data\",\"latex_structure_caption\":\"Structure of table @TABLE@\",\"latex_structure_continued_caption\":\"Structure of table @TABLE@ (continued)\",\"latex_structure_label\":\"tab:@TABLE@-structure\",\"latex_relation\":\"something\",\"latex_comments\":\"something\",\"latex_mime\":\"something\",\"latex_columns\":\"something\",\"latex_data_caption\":\"Content of table @TABLE@\",\"latex_data_continued_caption\":\"Content of table @TABLE@ (continued)\",\"latex_data_label\":\"tab:@TABLE@-data\",\"latex_null\":\"\\\\textit{NULL}\",\"mediawiki_structure_or_data\":\"structure_and_data\",\"mediawiki_caption\":\"something\",\"mediawiki_headers\":\"something\",\"htmlword_structure_or_data\":\"structure_and_data\",\"htmlword_null\":\"NULL\",\"ods_null\":\"NULL\",\"ods_structure_or_data\":\"data\",\"odt_structure_or_data\":\"structure_and_data\",\"odt_relation\":\"something\",\"odt_comments\":\"something\",\"odt_mime\":\"something\",\"odt_columns\":\"something\",\"odt_null\":\"NULL\",\"pdf_report_title\":\"\",\"pdf_structure_or_data\":\"structure_and_data\",\"phparray_structure_or_data\":\"data\",\"sql_include_comments\":\"something\",\"sql_header_comment\":\"\",\"sql_use_transaction\":\"something\",\"sql_compatibility\":\"NONE\",\"sql_structure_or_data\":\"structure_and_data\",\"sql_create_table\":\"something\",\"sql_auto_increment\":\"something\",\"sql_create_view\":\"something\",\"sql_procedure_function\":\"something\",\"sql_create_trigger\":\"something\",\"sql_backquotes\":\"something\",\"sql_type\":\"INSERT\",\"sql_insert_syntax\":\"both\",\"sql_max_query_size\":\"50000\",\"sql_hex_for_binary\":\"something\",\"sql_utc_time\":\"something\",\"texytext_structure_or_data\":\"structure_and_data\",\"texytext_null\":\"NULL\",\"xml_structure_or_data\":\"data\",\"xml_export_events\":\"something\",\"xml_export_functions\":\"something\",\"xml_export_procedures\":\"something\",\"xml_export_tables\":\"something\",\"xml_export_triggers\":\"something\",\"xml_export_views\":\"something\",\"xml_export_contents\":\"something\",\"yaml_structure_or_data\":\"data\",\"\":null,\"lock_tables\":null,\"as_separate_files\":null,\"csv_removeCRLF\":null,\"excel_removeCRLF\":null,\"json_pretty_print\":null,\"htmlword_columns\":null,\"ods_columns\":null,\"sql_dates\":null,\"sql_relation\":null,\"sql_mime\":null,\"sql_disable_fk\":null,\"sql_views_as_tables\":null,\"sql_metadata\":null,\"sql_create_database\":null,\"sql_drop_table\":null,\"sql_if_not_exists\":null,\"sql_simple_view_export\":null,\"sql_view_current_user\":null,\"sql_or_replace_view\":null,\"sql_truncate\":null,\"sql_delayed\":null,\"sql_ignore\":null,\"texytext_columns\":null}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__favorite`
+--
+
+CREATE TABLE `pma__favorite` (
+  `username` varchar(64) NOT NULL,
+  `tables` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Favorite tables';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__history`
+--
+
+CREATE TABLE `pma__history` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `db` varchar(64) NOT NULL DEFAULT '',
+  `table` varchar(64) NOT NULL DEFAULT '',
+  `timevalue` timestamp NOT NULL DEFAULT current_timestamp(),
+  `sqlquery` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__navigationhiding`
+--
+
+CREATE TABLE `pma__navigationhiding` (
+  `username` varchar(64) NOT NULL,
+  `item_name` varchar(64) NOT NULL,
+  `item_type` varchar(64) NOT NULL,
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Hidden items of navigation tree';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__pdf_pages`
+--
+
+CREATE TABLE `pma__pdf_pages` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `page_nr` int(10) UNSIGNED NOT NULL,
+  `page_descr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__recent`
+--
+
+CREATE TABLE `pma__recent` (
+  `username` varchar(64) NOT NULL,
+  `tables` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
+
+--
+-- Dumping data for table `pma__recent`
+--
+
+INSERT INTO `pma__recent` (`username`, `tables`) VALUES
+('root', '[{\"db\":\"shopping_cart\",\"table\":\"orders\"},{\"db\":\"shopping_cart\",\"table\":\"products\"},{\"db\":\"mon_aft\",\"table\":\"files\"},{\"db\":\"mon_aft\",\"table\":\"product\"},{\"db\":\"mon_aft\",\"table\":\"orders_detail\"},{\"db\":\"mon_aft\",\"table\":\"employee\"},{\"db\":\"mon_aft\",\"table\":\"webboard\"},{\"db\":\"mon_aft\",\"table\":\"orders\"}]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__relation`
+--
+
+CREATE TABLE `pma__relation` (
+  `master_db` varchar(64) NOT NULL DEFAULT '',
+  `master_table` varchar(64) NOT NULL DEFAULT '',
+  `master_field` varchar(64) NOT NULL DEFAULT '',
+  `foreign_db` varchar(64) NOT NULL DEFAULT '',
+  `foreign_table` varchar(64) NOT NULL DEFAULT '',
+  `foreign_field` varchar(64) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__savedsearches`
+--
+
+CREATE TABLE `pma__savedsearches` (
+  `id` int(5) UNSIGNED NOT NULL,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `search_name` varchar(64) NOT NULL DEFAULT '',
+  `search_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Saved searches';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_coords`
+--
+
+CREATE TABLE `pma__table_coords` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `pdf_page_number` int(11) NOT NULL DEFAULT 0,
+  `x` float UNSIGNED NOT NULL DEFAULT 0,
+  `y` float UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_info`
+--
+
+CREATE TABLE `pma__table_info` (
+  `db_name` varchar(64) NOT NULL DEFAULT '',
+  `table_name` varchar(64) NOT NULL DEFAULT '',
+  `display_field` varchar(64) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__table_uiprefs`
+--
+
+CREATE TABLE `pma__table_uiprefs` (
+  `username` varchar(64) NOT NULL,
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL,
+  `prefs` text NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__tracking`
+--
+
+CREATE TABLE `pma__tracking` (
+  `db_name` varchar(64) NOT NULL,
+  `table_name` varchar(64) NOT NULL,
+  `version` int(10) UNSIGNED NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  `schema_snapshot` text NOT NULL,
+  `schema_sql` text DEFAULT NULL,
+  `data_sql` longtext DEFAULT NULL,
+  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') DEFAULT NULL,
+  `tracking_active` int(1) UNSIGNED NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Database changes tracking for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__userconfig`
+--
+
+CREATE TABLE `pma__userconfig` (
+  `username` varchar(64) NOT NULL,
+  `timevalue` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `config_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
+
+--
+-- Dumping data for table `pma__userconfig`
+--
+
+INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
+('root', '2025-03-02 17:22:14', '{\"Console\\/Mode\":\"show\",\"Console\\/Height\":91.98949999999999}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__usergroups`
+--
+
+CREATE TABLE `pma__usergroups` (
+  `usergroup` varchar(64) NOT NULL,
+  `tab` varchar(64) NOT NULL,
+  `allowed` enum('Y','N') NOT NULL DEFAULT 'N'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User groups with configured menu items';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pma__users`
+--
+
+CREATE TABLE `pma__users` (
+  `username` varchar(64) NOT NULL,
+  `usergroup` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users and their assignments to user groups';
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `pma__bookmark`
+--
+ALTER TABLE `pma__bookmark`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pma__central_columns`
+--
+ALTER TABLE `pma__central_columns`
+  ADD PRIMARY KEY (`db_name`,`col_name`);
+
+--
+-- Indexes for table `pma__column_info`
+--
+ALTER TABLE `pma__column_info`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`);
+
+--
+-- Indexes for table `pma__designer_settings`
+--
+ALTER TABLE `pma__designer_settings`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__export_templates`
+--
+ALTER TABLE `pma__export_templates`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`);
+
+--
+-- Indexes for table `pma__favorite`
+--
+ALTER TABLE `pma__favorite`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__history`
+--
+ALTER TABLE `pma__history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`,`db`,`table`,`timevalue`);
+
+--
+-- Indexes for table `pma__navigationhiding`
+--
+ALTER TABLE `pma__navigationhiding`
+  ADD PRIMARY KEY (`username`,`item_name`,`item_type`,`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__pdf_pages`
+--
+ALTER TABLE `pma__pdf_pages`
+  ADD PRIMARY KEY (`page_nr`),
+  ADD KEY `db_name` (`db_name`);
+
+--
+-- Indexes for table `pma__recent`
+--
+ALTER TABLE `pma__recent`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__relation`
+--
+ALTER TABLE `pma__relation`
+  ADD PRIMARY KEY (`master_db`,`master_table`,`master_field`),
+  ADD KEY `foreign_field` (`foreign_db`,`foreign_table`);
+
+--
+-- Indexes for table `pma__savedsearches`
+--
+ALTER TABLE `pma__savedsearches`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `u_savedsearches_username_dbname` (`username`,`db_name`,`search_name`);
+
+--
+-- Indexes for table `pma__table_coords`
+--
+ALTER TABLE `pma__table_coords`
+  ADD PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`);
+
+--
+-- Indexes for table `pma__table_info`
+--
+ALTER TABLE `pma__table_info`
+  ADD PRIMARY KEY (`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__table_uiprefs`
+--
+ALTER TABLE `pma__table_uiprefs`
+  ADD PRIMARY KEY (`username`,`db_name`,`table_name`);
+
+--
+-- Indexes for table `pma__tracking`
+--
+ALTER TABLE `pma__tracking`
+  ADD PRIMARY KEY (`db_name`,`table_name`,`version`);
+
+--
+-- Indexes for table `pma__userconfig`
+--
+ALTER TABLE `pma__userconfig`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `pma__usergroups`
+--
+ALTER TABLE `pma__usergroups`
+  ADD PRIMARY KEY (`usergroup`,`tab`,`allowed`);
+
+--
+-- Indexes for table `pma__users`
+--
+ALTER TABLE `pma__users`
+  ADD PRIMARY KEY (`username`,`usergroup`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pma__bookmark`
+--
+ALTER TABLE `pma__bookmark`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__column_info`
+--
+ALTER TABLE `pma__column_info`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__export_templates`
+--
+ALTER TABLE `pma__export_templates`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pma__history`
+--
+ALTER TABLE `pma__history`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__pdf_pages`
+--
+ALTER TABLE `pma__pdf_pages`
+  MODIFY `page_nr` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pma__savedsearches`
+--
+ALTER TABLE `pma__savedsearches`
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- Database: `project4`
+--
+CREATE DATABASE IF NOT EXISTS `project4` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `project4`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`) VALUES
+(1, 'panyawat@gmail.com', '$2y$10$mozNjBL2EIosgpMJ5/D5ZOmf5m7/bPj/nIbrhnISF98fka6NsqHku'),
+(2, 'panyawat@gami', '$2y$10$0PKNfqFQoMhvkIAWeVpHqO8e758tcNo2ScWqcx/e3oXBQ16iIjXMO');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- Database: `project4 (1)`
+--
+CREATE DATABASE IF NOT EXISTS `project4 (1)` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `project4 (1)`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `booking_id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `locker_id` varchar(20) NOT NULL,
+  `baggage_count` int(11) NOT NULL,
+  `duration` int(11) NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  `payment_status` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`booking_id`, `user_name`, `locker_id`, `baggage_count`, `duration`, `start_time`, `end_time`, `payment_status`, `status`) VALUES
+(1, 'jjj', '10', 1, 2, '2025-02-26 07:19:00', '2025-02-26 09:19:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(2, 'jjj', '10', 1, 2, '2025-02-26 07:19:00', '2025-02-26 09:19:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(3, 'jjj', '01', 1, 2, '2025-02-26 07:22:00', '2025-02-26 09:22:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(4, 'jjj', '01', 1, 2, '2025-02-26 07:23:00', '2025-02-26 09:23:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(5, 'kkk', '17', 1, 3, '2025-02-26 08:26:00', '2025-02-26 11:26:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(6, 'bam', '16', 2, 4, '2025-02-26 11:33:00', '2025-02-26 04:33:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(7, 'bammy', '16', 1, 2, '2025-02-26 09:37:00', '2025-02-26 11:37:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(8, 'bambam', '17', 2, 3, '2025-02-27 07:41:00', '2025-02-27 09:42:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(9, 'bambam', '01', 2, 3, '2025-02-26 07:51:00', '2025-02-26 10:51:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(10, 'gg', '12', 2, 6, '2025-02-26 20:14:00', '2025-02-26 14:14:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(11, 'แบม', '01', 2, 2, '2025-02-26 22:51:00', '2025-02-26 12:51:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(12, 'น้ำอิง', '20', 2, 3, '2025-02-26 21:53:00', '2025-02-26 12:53:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(13, 'ปริมคุง', '10', 3, 9, '2025-02-26 22:03:00', '2025-02-26 19:03:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(14, 'ปอฝ้าย', '15', 2, 8, '2025-02-26 22:06:00', '2025-02-26 17:07:00', 'รอการชำระเงิน', 'กำลังใช้งาน'),
+(15, 'อิงอิง', '20', 1, 2, '2025-02-27 07:02:00', '2025-02-27 09:02:00', '', ''),
+(16, 'ปริมปริม', '14', 3, 3, '2025-02-27 09:24:00', '2025-02-27 23:24:00', '', ''),
+(17, 'ปริมปริม', '14', 3, 2, '2025-02-27 06:28:00', '2025-02-27 01:28:00', '', ''),
+(18, 'bee', '18', 3, 8, '2025-02-27 15:22:00', '2025-02-27 23:22:00', '', ''),
+(19, 'pim', '16', 2, 6, '2025-02-27 15:27:00', '2025-02-27 21:27:00', '', ''),
+(20, 'ปอฝ้าย', '20', 2, 4, '2025-02-27 16:16:00', '2025-02-27 20:16:00', '', ''),
+(21, 'numing', '20', 2, 5, '2025-02-27 16:46:00', '2025-02-27 21:46:00', '', ''),
+(22, 'lol', '14', 2, 7, '2025-02-27 17:00:00', '2025-02-28 00:00:00', '', ''),
+(23, 'พิม ว่างมาก', '20', 1, 6, '2025-02-27 20:34:00', '2025-02-28 02:34:00', '', ''),
+(24, 'งานเยอะ เอาแต่นอน', '20', 2, 4, '2025-02-27 20:39:00', '2025-02-28 00:39:00', '', ''),
+(25, 'mink kkk', '19', 1, 5, '2025-02-27 21:09:00', '2025-02-28 02:09:00', '', ''),
+(26, 'ง่วงนอนสุดๆ', '08', 1, 3, '2025-02-27 21:26:00', '2025-02-28 00:26:00', '', ''),
+(27, 'อยากนอนมากๆ', '06', 2, 6, '2025-02-27 21:31:00', '2025-02-28 03:31:00', '', ''),
+(28, 'จุงจุง', '09', 2, 5, '2025-02-27 22:13:00', '2025-02-28 03:13:00', '', ''),
+(29, 'bb', '12', 2, 1, '2025-02-27 23:07:00', '2025-02-28 00:07:00', '', ''),
+(30, 'ปีใหม่', '16', 3, 6, '2025-02-27 23:26:00', '2025-02-28 05:26:00', '', ''),
+(31, 'ลิง', '19', 2, 3, '2025-02-27 23:32:00', '2025-02-28 02:32:00', 'ชำระเงินแล้ว', ''),
+(32, 'น้อย', '17', 1, 5, '2025-02-27 23:35:00', '2025-02-28 04:35:00', 'ชำระเงินแล้ว', 'กำลังใช้งาน'),
+(33, 'momojaeg', '15', 1, 2, '2025-02-27 23:40:00', '2025-02-28 01:40:00', 'ชำระเงินแล้ว', 'กำลังใช้งาน');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `membership`
+--
+
+CREATE TABLE `membership` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `phone_number` varchar(15) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `confirm_password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `membership`
+--
+
+INSERT INTO `membership` (`id`, `first_name`, `last_name`, `phone_number`, `email`, `password`, `confirm_password`, `created_at`) VALUES
+(1, '', 'คุง', '0981234567', 'ppbg@gmail.com', '123456', '123456', '2025-02-27 09:11:51'),
+(2, '', 'จีนพุด', '0812345678', 'aom@gmail.com', '098765', '098765', '2025-02-27 09:14:55'),
+(3, '', 'คิมม่อม', '0987654321', 'kimmon@gmail.com', '567890', '567890', '2025-02-27 09:16:34'),
+(4, '', 'ggggg', '0234567890', 'fd@gmail.com', '6789078', '6789078', '2025-02-27 09:56:41'),
+(5, '', 'อยากนอนต่อ', '0954478781', 'ppf@gmail.com', '123456', '123456', '2025-02-27 14:21:11'),
+(7, 'bar', 'bi', '0987456123', 'teetee@gmail.com', '789456', '789456', '2025-02-27 14:58:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`) VALUES
+(1, 'ppbb@example.com', 'password123456'),
+(2, 'oppo@example.com', 'password456789'),
+(3, 'ddd@example.com', 'password789123'),
+(4, 'nong@example.com', 'password890122'),
+(5, 'ning@example.com', 'password555555'),
+(6, 'bee@example.com', 'password232323'),
+(7, 'top@example.com', 'password565656'),
+(8, 'miv@example.com', 'password089764'),
+(9, 'min@example.com', 'password084976'),
+(10, 'play@example.com', 'password767676'),
+(11, 'ppbb@gmail.com', NULL),
+(12, 'pkl@gmail.com', NULL),
+(13, 'pg@gmail.com', NULL),
+(14, 'lovf@gmail.com', NULL),
+(15, 'lop@gmail.com', NULL),
+(16, 'poo@gmail.com', NULL),
+(17, 'lko@gmail.com', NULL),
+(18, 'pop@gmail.com', NULL),
+(19, 'play@gmail.com', NULL),
+(20, 'wonwoo@gmail.com', NULL),
+(21, 'dino@gmail.com', NULL),
+(22, 'goh@gmail.com', NULL),
+(23, 'bto@gmail.com', NULL),
+(24, 'glo@gmail.com', '85757567'),
+(25, 'momo@gmail.com', '1234567'),
+(26, 'huo@gmail.com', '678595959'),
+(27, 'gggg@gmail.com', '875757575'),
+(28, 'wer@gmail.com', '345678'),
+(29, 'dg@gmail.com', '5678904'),
+(30, 'hot@gmail.com', '123456'),
+(31, 'aj@gmail.com', '789456'),
+(32, 'dex@gmail.com', '789456'),
+(33, 'pipi@gmail.com', '789456'),
+(34, 'kk@gmail.com', '$2y$10$gzJgsrJODRRSHCqdR.S/VOb2qsMyNZGErDhxGqfgu4mkBCXpsAcAe'),
+(35, 'pim@gmail.com', '232323'),
+(36, 'bam@gmail.com', '123456'),
+(37, 'hhh@gmail.com', '123456'),
+(38, 'yy@gmail.com', '123456'),
+(39, 'users@gmail.com', '123456'),
+(40, 'gg@gmail.com', '121324'),
+(41, 'hgo@gmail.com', '456123'),
+(42, 'gh@gmail.com', '254613'),
+(43, 'yg@gmail.com', '123456'),
+(44, 'vee@gmail.com', '1234796'),
+(45, 'LOL23@gamil.com', '08564777'),
+(46, 'ggggg@gmail.com', '123456'),
+(47, 'fdd@gmail.com', '123456'),
+(48, 'ploo@gamil.com', '123456'),
+(49, 'poll45@gmail.com', '258796'),
+(50, 'fhghg@gmail.com', '123456');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`booking_id`);
+
+--
+-- Indexes for table `membership`
+--
+ALTER TABLE `membership`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `membership`
+--
+ALTER TABLE `membership`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+--
 -- Database: `shopping_cart`
 --
+CREATE DATABASE IF NOT EXISTS `shopping_cart` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `shopping_cart`;
 
 -- --------------------------------------------------------
 
@@ -156,7 +909,7 @@ INSERT INTO `tbl_product` (`p_id`, `p_name`, `type_id`, `p_spec`, `p_detail`, `p
 (31, 'TD MINNOW', 13, 'สี WAKASAGI\r\nความยาว 7.62 เซนติเมตร\r\nน้ำหนักเหยื่อ 20 กรัม\r\nขนาดตัวเป็น เบอร์ 10', 'Daiwa TD Minnow ช่วยให้การปั่นสายได้ไกลและสร้างเสียงกระทบที่ดังเมื่อมันเคลื่อนที่ผ่านน้ำ พร้อมด้วยการออกแบบที่มีสีสันสดใสหลายแบบ ทำให้เป็นล่อที่ควรมีสำหรับนักตกปลาทุกคนที่ชื่นชอบการตกปลาด้วยล่อที่หายากและไม่เหมือนใคร', '174941330520250227_042942.png', 370, '10', 'ชิ้น', 3, '2025-02-26 21:29:42'),
 (32, 'SALTIGA DORADO POPPER', 13, 'สี LASER PINK PURPLE\r\nความยาว 7.62 เซนติเมตร\r\nน้ำหนักเหยื่อ 17 กรัม\r\nขนาดตัวเบ็ด 1/0', 'ความมั่นคงในขณะทำการเคลื่อนที่พร้อมกับการเบี่ยงเบนปริมาณน้ำจำนวนมากในระหว่างการตกลงช้าๆ และสร้างเสียงได้มาก รุ่นลอยน้ำช่วยให้คุณสามารถสร้างการเคลื่อนไหวที่สร้างความตื่นเต้นบนผิวน้ำ ดึงดูดความสนใจจากสัตว์นักล่าที่อยู่ในรัศมีที่กว้าง', '35574263720250227_043020.png', 480, '11', 'ชิ้น', 3, '2025-02-26 21:30:20'),
 (33, 'QUNAI SPOON', 13, 'สี IKURA\r\nความยาว  7.62\r\nน้ำหนักเหยื่อ 11 กรัม\r\nขนาดตัวเบ็ด เบอร์ 4', 'เลียนแบบการเคลื่อนไหวตามธรรมชาติของเหยื่อ, ทำให้โอกาสในการจับปลาประสบความสำเร็จเพิ่มขึ้น ไม่ว่าคุณจะเป็นนักตกปลาที่มีประสบการณ์หรือเพิ่งเริ่มต้น, Daiwa Qunai Spoon คือสิ่งที่คุณต้องมีในกล่องอุปกรณ์ของคุณ', '182467820420250227_042523.png', 270, '12', 'ชิ้น', 1, '2025-02-26 21:29:50'),
-(34, 'SC SHAD', 13, 'สี LASER PINK PURPLE\r\nความยาว 5 เซนติเมตร\r\nน้ำหนักเหยื่อ 17 กรัม\r\nขนาดตัวเบ็ด เบอร์ 12', 'Daiwa SC Shad มีรูปลักษณ์ที่สมจริงสุดๆ พร้อมด้วยตาที่สั่นและสีสันที่ดูเหมือนของจริงที่จะดึงดูดปลาจากระยะไกล SC Shad มีความยาว 2 นิ้ว และมีสีสันที่หลากหลาย  ที่ดูเป็นธรรมชาติ ซึ่งปลาหลายชนิดไม่สามารถต้านทานได้', '99078104120250227_042738.png', 300, '10', 'ชิ้น', 3, '2025-03-03 09:56:10'),
+(34, 'SC SHAD', 13, 'สี LASER PINK PURPLE\r\nความยาว 5 เซนติเมตร\r\nน้ำหนักเหยื่อ 17 กรัม\r\nขนาดตัวเบ็ด เบอร์ 12', 'Daiwa SC Shad มีรูปลักษณ์ที่สมจริงสุดๆ พร้อมด้วยตาที่สั่นและสีสันที่ดูเหมือนของจริงที่จะดึงดูดปลาจากระยะไกล SC Shad มีความยาว 2 นิ้ว และมีสีสันที่หลากหลาย  ที่ดูเป็นธรรมชาติ ซึ่งปลาหลายชนิดไม่สามารถต้านทานได้', '99078104120250227_042738.png', 300, '10', 'ชิ้น', 2, '2025-03-02 12:29:51'),
 (35, 'J-BRAID X8 GRAND BRAIDED LINE - GREY LIGHT', 12, 'ความยาว 270 เมตร\r\nGrey Light  \r\nการถัก 8 เส้น หรือ เชือกถัก 8 เส้น\r\n', 'ขอแนะนำ J-BRAID x8 GRAND สายเบรดอันยอดเยี่ยมใหม่จากครอบครัว J-Braid ของ Daiwa ที่แข็งแรงและทนทานต่อการขัดสี แต่ยังคงมีความยืดหยุ่นเพียงพอที่จะเคลื่อนตัวได้ราบเรียบบนม้วนสาย สาย J-Braid x8 GRAND เป็นสายคุณภาพสูงที่ใช้วัสดุชั้นยอดจากประเทศญี่ปุ่น สายนี้ถักจาก Izanas วัสดุใหม่ที่ใช้เทคโนโลยีสมัยใหม่และมีการถัก 8 เส้น ซึ่งทำให้สายนี้มีความยืดหยุ่นและทนทานต่อการขัดสีได้ดีกว่าสาย 4 เส้นทั่วไปถึง 4 เท่า', '70726798820250227_044204.png', 370, '10', 'ชิ้น', 4, '2025-02-26 21:51:10'),
 (36, 'J-BRAID x8 GRAND BRAIDED LINE - MULTI COLOR', 12, 'ความยาว 300 เมตร\r\nMulti Color\r\nการถัก 8 เส้น หรือ เชือกถัก 8 เส้น', 'ขอแนะนำ J-BRAID x8 GRAND สายเบรดสุดยอดใหม่ในครอบครัว J-Braid ของ Daiwa ที่แข็งแกร่งและทนทานต่อการขัดสี แต่ยังคงมีความยืดหยุ่นพอสมควรเพื่อให้สายวางตัวได้อย่างราบเรียบบนม้วน สาย J-Braid x8 GRAND นี้เป็นสายเบรดคุณภาพสูงที่ทำจากวัสดุที่ดีที่สุดจากญี่ปุ่น โดยมีการถัก 8 เส้น ซึ่งใช้วัสดุใหม่ชื่อว่า Izanas ที่มีเทคโนโลยีทันสมัย และทำให้สายนี้มีความยืดหยุ่นสูงและทนทานต่อการขัดสีได้ดีกว่าสาย 4 เส้นทั่วไปถึง 4 เท่า\r\n\r\nJ-BRAID™ MULTI COLOR - การเข้าถึงระดับความลึกที่ต้องการไม่เคยง่ายขนาดนี้มาก่อน สายนี้จะมีการเปลี่ยนสีทุกๆ 10 เมตร ทำให้คุณสามารถเข้าถึงพื้นที่ที่ปลาอาจจะอยู่ได้อย่างรวดเร็ว', '104741263920250227_044612.png', 450, '10', 'ชิ้น', 2, '2025-02-27 07:01:35'),
 (37, 'SALTIGA x12 BRAIDED LINE', 12, 'ความยาว 1,800 เมตร\r\nMulti Color\r\nการถัก 12 เส้น หรือ เชือกถัก 12 เส้น\r\n\r\n', 'Daiwa’s Saltiga X12 braid พาสายการตกปลาขึ้นไปอีกขั้นด้วยความแข็งแกร่งและประสิทธิภาพที่ยอดเยี่ยม ด้วยการถักสายเบรด 12 เส้น Saltiga X12 ให้ความเรียบลื่นและทนทานต่อการขัดสีที่ไม่มีใครเทียบได้ พร้อมกับยังคงรักษาความบางของเส้นสายไว้ได้ สายเบรดระดับพรีเมียมนี้เหมาะสำหรับนักตกปลาที่ต้องการเป้าหมายใหญ่ ด้วยเทคนิคการตกปลาหลายรูปแบบ ตั้งแต่การตกปลาลึกสำหรับปลากะมงไปจนถึงการตกปลาด้วยเหยื่อเบาๆ สำหรับปลาปะการังที่แข็งแรง\r\n\r\nตัวบ่งชี้การเปลี่ยนสีช่วยให้การติดตามระดับความลึกง่ายขึ้น โดยการเปลี่ยนสีทุกๆ 10 เมตร พร้อมด้วยตัวบ่งชี้ที่ 5 เมตรและ 1 เมตรเพื่อแสดงความลึกและการเคลื่อนไหวของสาย', '35145474420250227_045106.png', 1500, '10', 'ชิ้น', 1, '2025-02-26 22:06:46'),
@@ -291,6 +1044,11 @@ ALTER TABLE `tbl_type`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+--
+-- Database: `test`
+--
+CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `test`;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
