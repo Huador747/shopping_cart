@@ -490,6 +490,23 @@ $p_id = $_GET["id"];
                 }
             });
         });
+
+        // Add event listener to checkout button
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', function () {
+                    window.location.href = 'checkout.php';
+                });
+            }
+
+            const viewCartBtn = document.querySelector('.view-cart-btn');
+            if (viewCartBtn) {
+                viewCartBtn.addEventListener('click', function () {
+                    window.location.href = 'cart-item.php';
+                });
+            }
+        });
     </script>
     <!-- Add this HTML for the slide-out cart at the end of your body tag, before the closing </body> -->
 
