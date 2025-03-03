@@ -5,8 +5,6 @@ $p_id = $_GET["id"];
 
 ?>
 <!DOCTYPE html>
-<a href="checkout.php?id=<?php echo $product_id; ?>" class="buy-now-btn">BUY IT NOW</a>
-
 <head>
     <?php include('../boot4.php'); ?>
     <style>
@@ -277,27 +275,40 @@ $p_id = $_GET["id"];
 
                             <!-- Price -->
                             <div class="price">฿<?php echo number_format($row["p_price"], 2); ?></div>
-
+                            
                             <!-- Payment Info -->
                             <div>
-                                <i class="fab fa-paypal"></i> Pay in 4 interest-free payments of
-                                ฿<?php echo number_format($row["p_price"] / 4, 2); ?> | Learn more
+                                <i class="fab fa-paypal"></i> Pay in 4 interest-free payments of ฿<?php echo number_format($row["p_price"]/4, 2); ?> | Learn more
                             </div>
-
+                            
                             <!-- Product Type -->
                             <div class="specs-section">
-                                <div>Model Type: <?php echo $row["type_name"]; ?> | <?php echo rand(6, 8); ?>' /
-                                    Fast-Medium Heavy-2Pcs</div>
+                                <div>Model Type: <?php echo $row["type_name"]; ?> </div>
+                            
+                                <?php if (in_array($row["type_name"], ["คันเบ็ดเคสติ้ง", "คันเบ็ดสปินนิ่ง"])) { ?>
+    <!-- Dropdown for variations -->
+    <div class="form-group mt-3">
+        <select class="form-control">
+            <option><?php echo $row["type_name"]; ?> | <?php echo rand(6, 8); ?>' / Fast-2Pcs - ฿<?php echo number_format($row["p_price"], 2); ?></option>    
+            <option><?php echo $row["type_name"]; ?> | <?php echo rand(6, 8); ?>' / Fast-2Pcs - ฿<?php echo number_format($row["p_price"], 2); ?></option>
+        </select>
+    </div>
+<?php } ?>
+<?php if (in_array($row["type_name"], ["สายเบ็ด"])) { ?>
+    <!-- Dropdown for variations -->
+    <div class="form-group mt-3">
+        <select class="form-control">
+            <option><?php echo $row["type_name"]; ?> | 8lb - ฿<?php echo number_format($row["p_price"], 2); ?></option>
+            <option><?php echo $row["type_name"]; ?> | 12lb - ฿<?php echo number_format($row["p_price"], 2); ?></option>
+            <option><?php echo $row["type_name"]; ?> | 16lb - ฿<?php echo number_format($row["p_price"], 2); ?></option>
+        </select>
+    </div>
+<?php } ?>
 
-                                <!-- Dropdown for variations -->
-                                <div class="form-group mt-3">
-                                    <select class="form-control">
-                                        <option><?php echo $row["type_name"]; ?> | <?php echo rand(6, 8); ?>' /
-                                            Fast-Medium Heavy-2Pcs - ฿<?php echo number_format($row["p_price"], 2); ?>
-                                        </option>
-                                    </select>
-                                </div>
 
+
+
+                                
                                 <!-- Bundle upsell -->
                                 <div class="mt-4">
                                     <h5>Don't Miss The Best Bundle</h5>
