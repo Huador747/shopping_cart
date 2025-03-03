@@ -55,13 +55,14 @@ $totalRows_typeprd = mysqli_num_rows($typeprd);
                             <img src="../m_img/8648831.png" width="24" height="24" class="mr-2" alt="ตะกร้า">
                         </a>
                     <?php } else { ?>
-                        <a class="btn btn-success mr-3 d-flex align-items-center" href="cart.php" role="button" style="font-size: 1.05rem;">
+                        <a class="btn btn-success mr-3 d-flex align-items-center" href="cart-item.php" role="button" style="font-size: 1.05rem;">
                             <img src="../m_img/8648831.png" width="24" height="24" class="mr-2" alt="ตะกร้า">
 
                         </a>
                     <?php } ?>
                     
                     <form class="form-inline my-2 my-lg-0" name="qp" action="index.php" method="GET">
+
                         <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาสินค้า" name="q">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit"
                             style="font-size: 1.05rem;">ค้นหา</button>

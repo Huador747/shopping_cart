@@ -16,7 +16,7 @@
     }
 
     /* ปรับขนาดสำหรับ Mobile */
-    @media (max-width: 576px) {
+    @media (max-width: 576px) { 
         .carousel-item img {
             height: 200px;
         }
