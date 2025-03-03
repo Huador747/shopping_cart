@@ -84,13 +84,14 @@
         <h3>ที่สุดของอุปกรณ์ตกปลา ครบจบในที่เดียว</h3>
         <nav>
             <ul>
-                <li><a href="#">สินค้า</a></li>
-                <li><a href="#">รอกเบทเคสติ้ง</a></li>
-                <li><a href="#">รอกสปินนิ่ง</a></li>
-                <li><a href="#">คันเบทเคสติ้ง</a></li>
-                <li><a href="#">คันสปินนิ่ง</a></li>
-                <li><a href="#">เหยื่อ</a></li>
-                <li><a href="#">อุปกรณ์เสริม</a></li>
+            <li><a href="http://localhost/shopping_cart/member/">สินค้า</a></li>
+                <li><a href="http://localhost/shopping_cart/member/index.php?act=showbytype&type_id=5">รอกเบทเคสติ้ง</a></li>
+                <li><a href="http://localhost/shopping_cart/member/index.php?act=showbytype&type_id=6">รอกสปินนิ่ง</a></li>
+                <li><a href="http://localhost/shopping_cart/member/index.php?act=showbytype&type_id=9">คันเบทเคสติ้ง</a></li>
+                <li><a href="http://localhost/shopping_cart/member/index.php?act=showbytype&type_id=10">คันสปินนิ่ง</a></li>
+                <li><a href="http://localhost/shopping_cart/member/index.php?act=showbytype&type_id=11">อุปกรณ์เสริม</a></li>
+                <li><a href="http://localhost/shopping_cart/member/index.php?act=showbytype&type_id=12">สายเบ็ด</a></li>
+                <li><a href="http://localhost/shopping_cart/member/index.php?act=showbytype&type_id=13">เหยื่อปลอม</a></li>
             </ul>
         </nav>
         <div class="footer-info">
@@ -100,10 +101,10 @@
             <p>🕒 เวลาทำการ: 09:00 - 21:00 น.</p>
         </div>
         <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61573680238029"><img src="../m_img/facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="../m_img/tiktok.png" alt="Tiktok"></a>
-            <a href="#"><img src="../m_img/line.png" alt="Line"></a>
-            <a href="#"><img src="../m_img/youtube.png" alt="YouTube"></a>
+        <a href="https://www.facebook.com/profile.php?id=61573680238029"><img src="../m_img/facebook.png" alt="Facebook"></a>
+            <a href="https://www.tiktok.com/th-TH/"><img src="../m_img/tiktok.png" alt="Tiktok"></a>
+            <a href="https://www.line.me/th/"><img src="../m_img/line.png" alt="Line"></a>
+            <a href="https://www.youtube.com/"><img src="../m_img/youtube.png" alt="YouTube"></a>
         </div>
         <p style="margin-top: 15px; font-size: 12px;">&copy; 2025 Meumaihattok. All Rights Reserved.</p>
     </div>
