@@ -27,7 +27,7 @@ $row = mysqli_fetch_array($result);
  
   <div class="form-group">
     <div class="col-sm-2 control-label">
-      Username :
+      ชื่อผู้ใช้ :
     </div>
     <div class="col-sm-3">
       <input type="text" name="m_user" required class="form-control" autocomplete="off" pattern="^[a-zA-Z0-9]+$" title="ภาษาอังกฤษหรือตัวเลขเท่านั้น" minlength="2" value="<?php echo $row['m_user'];?>">

@@ -67,14 +67,6 @@ if (isset($_SESSION['cart_items'])) {
                         <a class="nav-link" href="index.php">หน้าแรก</a>
                     </li>
                 </ul>
-                <div class="d-flex">
-                    <a href="cart-item.php" class="btn btn-outline-success me-2 cart-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count" id="cart-count">0</span>
-                    </a>
-                    <a href="login.php" class="btn btn-outline-primary me-2">เข้าสู่ระบบ</a>
-                    <a href="register.php" class="btn btn-primary">สมัครสมาชิก</a>
-                </div>
             </div>
         </div>
     </nav>
@@ -324,35 +316,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Footer section -->
-<footer class="bg-dark text-white mt-5 py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>ร้านค้าออนไลน์</h5>
-                <p>ร้านค้าออนไลน์ที่ให้บริการสินค้าคุณภาพดีราคาถูกที่สุด รับประกันความพึงพอใจ</p>
-            </div>
-            <div class="col-md-4">
-                <h5>ลิงก์ด่วน</h5>
-                <ul class="list-unstyled">
-                    <li><a href="index.php" class="text-white">หน้าแรก</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>ติดต่อเรา</h5>
-                <address>
-                    <p><i class="fas fa-map-marker-alt me-2"></i>ที่อยู่ร้าน: 39 หมู่ที่ 1 ถนนรังสิต - นครนายก ตำบล คลองหก อำเภอคลองหลวง ปทุมธานี 12110</p>
-                    <p><i class="fas fa-phone me-2"></i> 099-999-9999</p>
-                    <p><i class="fas fa-envelope me-2"></i>meumaihattok@gmail.com</p>
-                </address>
-            </div>
-        </div>
-        <hr>
-        <div class="text-center">
-            <p>&copy; <?php echo date('Y'); ?> Meumaihattok. All Rights Reserved.</p>
-        </div>
-    </div>
-</footer>
+<?php 
+include'footer.php';
+?>
 
 <!-- Bootstrap JS Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

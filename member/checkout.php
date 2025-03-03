@@ -3,10 +3,10 @@
 session_start();
 
 // รับค่า id สินค้าจาก URL
-$product_id = isset($_GET['id']) ? (int) $_GET['id'] : null;
+$p_id = isset($_GET['id']) ? (int) $_GET['id'] : null;
 
 // ตรวจสอบว่า id อยู่ในช่วงที่กำหนด (2-52)
-if ($product_id < 2 || $product_id > 52) {
+if ($p_id < 2 || $p_id > 52) {
     // หากไม่อยู่ในช่วง ให้เปลี่ยนเป็น null เพื่อแสดงข้อความแจ้งเตือน
     $product_id = null;
 }
@@ -88,8 +88,8 @@ function getProductById($id)
 
 // ดึงข้อมูลสินค้า
 $selected_product = null;
-if ($product_id) {
-    $selected_product = getProductById($product_id);
+if ($p_id) {
+    $selected_product = getProductById($p_id);
 }
 
 // ตรวจสอบการส่งฟอร์ม
@@ -647,15 +647,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="success-message">
                 <h2><i class="fas fa-check-circle"></i> ขอบคุณสำหรับการสั่งซื้อ!</h2>
                 <p>เราได้รับคำสั่งซื้อของคุณแล้ว จะจัดส่งสินค้าภายใน 2-3 วันทำการ</p>
-                <p>รหัสคำสั่งซื้อของคุณคือ: <strong><?php echo $_SESSION['orders']['orders_id']; ?></strong></p>
+                <p>รหัสคำสั่งซื้อของคุณคือ: <?php echo $_SESSION['order']['order_id']; ?></p>
                 <p>คุณจะได้รับข้อความยืนยันการสั่งซื้อไปยังเบอร์
-                    <?php echo htmlspecialchars($_SESSION['orders']['m_name']['m_tel   ']); ?> เร็วๆ นี้</p>
-
+                    <?php echo htmlspecialchars($_SESSION['order']['customer']['phone']); ?> เร็วๆ นี้</p>
                 <div class="back-link">
                     <a href="index.php" class="btn"><i class="fas fa-home"></i> กลับไปยังหน้าหลัก</a>
-                </div>
-                <div class="back-link">
-                    <a href="orderstracking.php" class="btn"><i class="fas fa-search"></i> ติดตามคำสั่งซื้อ</a>
                 </div>
             </div>
         <?php else: ?>

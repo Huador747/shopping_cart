@@ -41,7 +41,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-2 control-label">
-      Username :
+      ชื่อผู้ใช้ :
     </div>
     <div class="col-sm-3">
       <input type="text" name="m_user" required class="form-control" autocomplete="off" pattern="^[a-zA-Z0-9]+$" title="ภาษาอังกฤษหรือตัวเลขเท่านั้น" minlength="2">
@@ -49,7 +49,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-2 control-label" class="form-control" >
-      Password :
+      รหัสผ่าน :
     </div>
     <div class="col-sm-3">
       <input type="password" name="m_pass" required class="form-control" pattern="^[a-zA-Z0-9]+$" title="ภาษาอังกฤษหรือตัวเลขเท่านั้น" minlength="2">

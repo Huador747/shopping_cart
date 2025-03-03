@@ -10,14 +10,14 @@
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">Username :</label>
+            <label class="col-sm-2 control-label">ชื่อผู้ใช้ :</label>
             <div class="col-sm-6">
                 <input name="m_user" type="text" required class="form-control" />
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">Password :</label>
+            <label class="col-sm-2 control-label">รหัสผ่าน :</label>
             <div class="col-sm-6">
                 <input name="m_pass" type="password" required class="form-control" id="m_pass" />
             </div>
