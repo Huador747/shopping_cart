@@ -315,18 +315,6 @@ $p_id = $_GET["id"];
 
 
                                 
-                                <!-- Bundle upsell -->
-                                <div class="mt-4">
-                                    <h5>ห้ามพลาดข้อเสนอสุดพิเศษ!!</h5>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="bundle-check">
-                                        <label class="form-check-label" for="bundle-check">
-                                            <?php echo $row["type_name"]; ?> River Finesse Baitcasting Reel
-                                            <div>฿<?php echo number_format($row["p_price"] * 1.2, 2); ?>
-                                                ฿<?php echo number_format($row["p_price"] * 0.9, 2); ?> USD</div>
-                                        </label>
-                                    </div>
-                                </div>
 
                                 <!-- Quantity Selector -->
                                 <div class="quantity-selector">
@@ -336,8 +324,8 @@ $p_id = $_GET["id"];
                                 </div>
 
                                 <!-- Buy Buttons -->
-                                <button class="add-to-cart-btn">ADD TO CART</button>
-                                <button class="buy-now-btn" onclick="buyNow()">BUY IT NOW</button>
+                                <button class="add-to-cart-btn">เพิ่มไปยังรถเข็น</button>
+                                <button class="buy-now-btn" onclick="buyNow()">ซื้อสินค้า</button>
 
                                 <script>
                                     function buyNow() {
@@ -374,14 +362,14 @@ $p_id = $_GET["id"];
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview"
-                                    role="tab">Overview</a>
+                                    role="tab">ภา</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="specs-tab" data-toggle="tab" href="#specs" role="tab">Specs</a>
+                                <a class="nav-link" id="specs-tab" data-toggle="tab" href="#specs" role="tab">สเปคสินค้า</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews"
-                                    role="tab">Reviews</a>
+                                    role="tab">รีวิว</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -487,12 +475,6 @@ $p_id = $_GET["id"];
             quantityInput.addEventListener('change', function () {
                 let currentValue = parseInt(quantityInput.value);
 
-                // If not a number, reset to 1
-                if (isNaN(currentValue)) {
-                    quantityInput.value = minQuantity;
-                    return;
-                }
-
                 // Ensure minimum quantity
                 if (currentValue < minQuantity) {
                     quantityInput.value = minQuantity;
@@ -527,7 +509,7 @@ $p_id = $_GET["id"];
 
     <div id="shopping-cart-sidebar" class="cart-sidebar">
         <div class="cart-header">
-            <h4>Shopping Cart (<span id="cart-count">0</span>)</h4>
+            <h4>รถเข็น (<span id="cart-count">0</span>)</h4>
             <button class="close-cart">&times;</button>
         </div>
         <div id="cart-items" class="cart-items">
@@ -535,14 +517,14 @@ $p_id = $_GET["id"];
         </div>
         <div class="cart-footer">
             <div class="discount-section">
-                <h5>Discount applied</h5>
+                <h5>ส่วนลด</h5>
                 <div class="discount-amount">฿0.00</div>
             </div>
             <div class="subtotal-section">
-                <h5>Subtotal</h5>
+                <h5>ราคาทั้งหมด</h5>
                 <div id="cart-subtotal">฿0.00</div>
             </div>
-            <button class="view-cart-btn">VIEW CART</button>
+            <button class="view-cart-btn">ดูตระกร้าสินค้า</button>
         </div>
     </div>
 

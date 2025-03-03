@@ -264,12 +264,9 @@ $p_id = $_GET["id"];
                     <div class="col-md-6">
                         <div class="product-title"><?php echo $row["p_name"]; ?></div>
                         
-                        <div class="product-rating">
-                            ★★★★★ (<?php echo $row["p_view"]; ?> รีวิว) | ยังไม่มีคำถาม
-                        </div>
                         
                         <div class="product-price">
-                            ฿<?php echo number_format($row["p_price"], 2); ?>
+                            <?php echo number_format($row["p_price"], 2); ?>
                         </div>
                         
                         <div class="product-type">
@@ -294,8 +291,8 @@ $p_id = $_GET["id"];
                         
                         <!-- Action Buttons -->
                         <div class="action-btns">
-                            <button class="add-to-cart-btn">เพิ่มลงตะกร้า</button>
-                            <button class="buy-now-btn">ซื้อเลย</button>
+                            <button class="add-to-cart-btn" onclick="redirectToLogin()">เพิ่มลงตะกร้า</button>
+                            <button class="buy-now-btn" onclick="redirectToLogin()">ซื้อเลย</button>
                         </div>
                         
                         <!-- Share Buttons -->
@@ -312,8 +309,8 @@ $p_id = $_GET["id"];
                 <!-- Product Tabs Section -->
                 <div class="product-tabs">
                     <div class="tab-links">
-                        <div class="tab-link active" onclick="changeTab(this, 'overview')">รายละเอียด</div>
-                        <div class="tab-link" onclick="changeTab(this, 'specs')">ข้อมูลจำเพาะ</div>
+                        <div class="tab-link active" onclick="changeTab(this, 'overview')">ภาพรวม</div>
+                        <div class="tab-link" onclick="changeTab(this, 'specs')">สเปคสินค้า</div>
                         <div class="tab-link" onclick="changeTab(this, 'reviews')">รีวิว</div>
                     </div>
                 </div>
@@ -382,6 +379,11 @@ $p_id = $_GET["id"];
             if (qty > 1) {
                 qtyInput.value = qty - 1;
             }
+        }
+
+        function redirectToLogin() {
+            alert("กรุณาเข้าสู่ระบบหรือสมัครสมชิก");
+            window.location.href = "form_login.php";
         }
     </script>
 </body>

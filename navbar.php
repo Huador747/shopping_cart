@@ -31,11 +31,11 @@
                     <?php if (!isset($member_id) || $member_id == '') { ?>
                         <a href="#" class="mr-2" title="ตะกร้าสินค้า" style="display: inline-block; margin-top: 5px;" 
                            onclick="alert('กรุณาเข้าสู่ระบบก่อนใช้งานตะกร้าสินค้า'); window.location.href='form_login.php'; return false;">
-                            <img src="m_img/8648831.png" alt="ตะกร้าสินค้า" style="height: 25px; width: auto;">
+                            <img src="m_img/8648831.png" alt="ตะกร้าสินค้า" style="height: 32px; width: auto;">
                         </a>
                     <?php } else { ?>
                         <a href="cart.php" class="mr-2" title="ตะกร้าสินค้า" style="display: inline-block; margin-top: 5px;">
-                            <img src="m_img/8648831.png" alt="ตะกร้าสินค้า" style="height: 25px; width: auto;">
+                            <img src="m_img/8648831.png" alt="ตะกร้าสินค้า" style="height: 32px; width: auto;">
                         </a>
                     <?php } ?>
                     <form class="form-inline my-2 my-lg-0" name="qp" action="index.php" method="GET">

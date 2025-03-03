@@ -9,6 +9,11 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="login/css/style.css">
+	<style>
+		.container {
+			max-width: 600px;
+		}
+	</style>
 </head>
 
 <body>

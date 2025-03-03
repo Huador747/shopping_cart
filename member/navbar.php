@@ -32,9 +32,6 @@ $totalRows_typeprd = mysqli_num_rows($typeprd);
                 </button>
                 <ul class="navbar-nav ml-2">
                     <?php if (!isset($member_id) || $member_id == '') { ?>
-                        <li class="nav-item ml-2">
-                            <a class="btn" href="form_login.php" role="button" style="font-size: 1.05rem;">เข้าสู่ระบบ</a>
-                        </li>
                     <?php } else { ?>
                         <li class="nav-item ml-2">
                             <a class="btn btn-danger" href="../logout.php" role="button"
@@ -50,13 +47,13 @@ $totalRows_typeprd = mysqli_num_rows($typeprd);
                     
                     <!-- Cart Icon with Button -->
                     <?php if (!isset($member_id) || $member_id == '') { ?>
-                        <a class="btn btn-success mr-3 d-flex align-items-center" href="#" role="button" style="font-size: 1.05rem;"
+                        <a class="btn mr-3 d-flex align-items-center" href="#" role="button" style="font-size: 1.05rem;"
                            onclick="alert('กรุณาเข้าสู่ระบบก่อนใช้งานตะกร้าสินค้า'); window.location.href='form_login.php'; return false;">
-                            <img src="../m_img/8648831.png" width="24" height="24" class="mr-2" alt="ตะกร้า">
+                            <img src="../m_img/8648831.png" width="32" height="32" class="mr-2" alt="ตะกร้า">
                         </a>
                     <?php } else { ?>
-                        <a class="btn btn-success mr-3 d-flex align-items-center" href="cart-item.php" role="button" style="font-size: 1.05rem;">
-                            <img src="../m_img/8648831.png" width="24" height="24" class="mr-2" alt="ตะกร้า">
+                        <a class="btn mr-3 d-flex align-items-center" href="cart-item.php" role="button" style="font-size: 1.05rem;">
+                            <img src="../m_img/8648831.png" width="32" height="32" class="mr-2" alt="ตะกร้า">
 
                         </a>
                     <?php } ?>
