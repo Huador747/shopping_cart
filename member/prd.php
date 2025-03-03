@@ -256,12 +256,14 @@ $p_id = $_GET["id"];
                             
                             <!-- Product Type -->
                             <div class="specs-section">
-                                <div>Model Type: <?php echo $row["type_name"]; ?> | <?php echo rand(6, 8); ?>' / Fast-Medium Heavy-2Pcs</div>
+                                <div>Model Type: <?php echo $row["type_name"]; ?> 
                                 
                                 <!-- Dropdown for variations -->
                                 <div class="form-group mt-3">
                                     <select class="form-control">
                                         <option><?php echo $row["type_name"]; ?> | <?php echo rand(6, 8); ?>' / Fast-Medium Heavy-2Pcs - ฿<?php echo number_format($row["p_price"], 2); ?></option>
+                                        <option><?php echo $row["type_name"]; ?> | <?php echo rand(6, 8); ?>' / Fast-Medium Heavy-2Pcs - ฿<?php echo number_format($row["p_price"], 2); ?></option>
+
                                     </select>
                                 </div>
                                 
