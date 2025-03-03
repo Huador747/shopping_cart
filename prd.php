@@ -300,7 +300,7 @@ $p_id = $_GET["id"];
                         
                         <!-- Share Buttons -->
                         <div class="share-buttons" style="margin-top: 20px;">
-                            <p>แชร์: 
+                            
                                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
                                 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5500ee80057fdb99"></script>
                                 <div class="addthis_inline_share_toolbox_sf2w"></div>

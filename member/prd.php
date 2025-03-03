@@ -311,7 +311,7 @@ $p_id = $_GET["id"];
                                 
                                 <!-- Bundle upsell -->
                                 <div class="mt-4">
-                                    <h5>Don't Miss The Best Bundle</h5>
+                                    <h5>ห้ามพลาดข้อเสนอสุดพิเศษ!!</h5>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="bundle-check">
                                         <label class="form-check-label" for="bundle-check">
@@ -335,15 +335,24 @@ $p_id = $_GET["id"];
 
                                 <script>
                                     function buyNow() {
-                                        // ดึงค่า id จาก URL ปัจจุบัน
                                         const urlParams = new URLSearchParams(window.location.search);
                                         const productId = urlParams.get('id');
 
-                                        // ถ้ามีค่า id ให้ส่งต่อไปยังหน้า checkout.php
                                         if (productId) {
-                                            window.location.href = 'checkout.php?id=' + productId;
+                                            fetch(`fetch_product.php?id=${productId}`)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    if (data.success) {
+                                                        window.location.href = `checkout.php?id=${productId}&name=${encodeURIComponent(data.name)}&price=${data.price}`;
+                                                    } else {
+                                                        alert('Failed to fetch product details.');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error fetching product details:', error);
+                                                    alert('An error occurred while fetching product details.');
+                                                });
                                         } else {
-                                            // กรณีไม่มี id ให้ไปหน้า checkout โดยตรง
                                             window.location.href = 'checkout.php';
                                         }
                                     }
@@ -404,7 +413,7 @@ $p_id = $_GET["id"];
 
                 <!-- Social Share -->
                 <div class="row mt-3">
-                    <div class="col-12">
+                    <div class="col-12"></div>
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <script type="text/javascript"
                             src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5500ee80057fdb99"></script>
