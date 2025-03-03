@@ -114,11 +114,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // ถ้าไม่มีข้อผิดพลาด
-    if (empty($errors)) {
+    if (empty($errors) && $selected_product) {
         // บันทึกการสั่งซื้อลงฐานข้อมูล
         $conn = connectDB();
         
-        $stmt = $conn->prepare("INSERT INTO orders (product_id, fullname, phone, address, payment_method, total_price, order_date) VALUES (?, ?, ?, ?, ?, ?, NOW())");
+        $stmt = $conn->prepare("INSERT INTO tbl_orders (p_name, m_name, m_tel, m_address, payment_method, total_price, order_date) VALUES (?, ?, ?, ?, ?, ?, NOW())");
         
         // ตรวจสอบว่า prepare สำเร็จหรือไม่
         if ($stmt === false) {
@@ -129,9 +129,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $phone = $_POST['phone'];
             $address = $_POST['address'];
             $payment_method = $_POST['payment_method'];
-            $total_price = $selected_product['price'];
+            $total_price = isset($selected_product['p_price']) ? $selected_product['p_price'] : 0;
+            $product_name = $selected_product['p_name'];
             
-            $stmt->bind_param("issssd", $product_id, $fullname, $phone, $address, $payment_method, $total_price);
+            $stmt->bind_param("sssssd", $product_name, $fullname, $phone, $address, $payment_method, $total_price);
             
             if ($stmt->execute()) {
                 // สั่งซื้อสำเร็จ
@@ -140,9 +141,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // เก็บข้อมูลการสั่งซื้อไว้ใน session
                 $_SESSION['order'] = [
                     'order_id' => $order_id,
-                    'product_id' => $product_id,
-                    'product_name' => $selected_product['name'],
-                    'price' => $selected_product['price'],
+                    'product_name' => $product_name,
+                    'price' => $total_price,
                     'customer' => [
                         'fullname' => $fullname,
                         'phone' => $phone,
@@ -159,6 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->close();
             $conn->close();
         }
+    } else {
+        $errors[] = 'ไม่พบสินค้าที่เลือก';
     }
 }
 
@@ -436,17 +438,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <div class="product-item">
                     <div class="product-image">
-                        <img src="images/<?php echo htmlspecialchars($selected_product['image']); ?>" alt="<?php echo htmlspecialchars($selected_product['name']); ?>">
+                        <img src="../p_img/<?php echo htmlspecialchars($selected_product['p_img']); ?>" alt="<?php echo htmlspecialchars($selected_product['p_name']); ?>">
                     </div>
                     <div class="product-details">
-                        <h3><?php echo htmlspecialchars($selected_product['name']); ?></h3>
+                        <h3><?php echo htmlspecialchars($selected_product['p_name']); ?></h3>
                         <p>รหัสสินค้า: <?php echo htmlspecialchars($product_id); ?></p>
-                        <p class="product-price">฿<?php echo number_format($selected_product['price'], 2); ?></p>
+                        <p class="product-price">฿<?php echo number_format($selected_product['p_price'], 2); ?></p>
                     </div>
                 </div>
                 
                 <div class="total">
-                    ยอดรวมทั้งสิ้น: ฿<?php echo number_format($selected_product['price'], 2); ?>
+                    ยอดรวมทั้งสิ้น: ฿<?php echo number_format($selected_product['p_price'], 2); ?>
                 </div>
             </div>
         </div>
