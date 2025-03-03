@@ -56,7 +56,7 @@ function getProductById($id) {
     $conn = connectDB();
     
     // ใช้ Prepared Statement เพื่อป้องกัน SQL Injection
-    $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
+    $stmt = $conn->prepare("SELECT * FROM tbl_product WHERE p_id = ?");
     
     // ตรวจสอบว่า prepare สำเร็จหรือไม่
     if ($stmt === false) {
